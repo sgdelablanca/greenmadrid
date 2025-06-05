@@ -1,12 +1,8 @@
 
-
-
-
 const express = require('express');
 const router = express.Router();
 const { Pool } = require('pg');
 
-// Configuración de la conexión
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
@@ -15,38 +11,7 @@ const pool = new Pool({
   port: 5433,
 });
 
-//  Obtener todos los parques con filtros opcionales
-/*
-router.get('/', async (req, res) => {
-  const { search = '', barrio = '', order = 'asc' } = req.query;
 
-  try {
-    const values = [];
-    let where = '';
-
-    if (search) {
-      values.push(`%${search}%`);
-      where += `LOWER(nombre) ILIKE LOWER($${values.length})`;
-    }
-
-    if (barrio) {
-      values.push(barrio);
-      where += where ? ` AND barrio = $${values.length}` : `barrio = $${values.length}`;
-    }
-
-    const query = `
-      SELECT * FROM parques_jardines
-      ${where ? 'WHERE ' + where : ''}
-      ORDER BY nombre ${order.toLowerCase() === 'desc' ? 'DESC' : 'ASC'}
-    `;
-
-    const result = await pool.query(query, values);
-    res.json(result.rows);
-  } catch (err) {
-    console.error('Error al obtener parques:', err);
-    res.status(500).json({ error: 'Error al obtener datos de parques' });
-  }
-});*/
 
 router.get('/', async (req, res) => {
   const { search = '', barrio = '', order = 'asc' } = req.query;
@@ -100,22 +65,7 @@ router.get('/', async (req, res) => {
 
 
 
-//  Obtener parque por ID
-/*
-router.get('/:id', async (req, res) => {
-  const { id } = req.params;
-  try {
-    const result = await pool.query('SELECT * FROM parques_jardines WHERE id = $1', [id]);
-    if (result.rows.length === 0) {
-      return res.status(404).json({ error: 'Parque no encontrado' });
-    }
-    res.json(result.rows[0]);
-  } catch (err) {
-    console.error('Error al obtener parque por ID:', err);
-    res.status(500).json({ error: 'Error interno del servidor' });
-  }
-});
-*/
+
 //  Obtener lista de barrios únicos
 router.get('/barrios/lista', async (req, res) => {
   try {

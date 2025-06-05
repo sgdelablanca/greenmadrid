@@ -75,7 +75,7 @@
     .then(html => {
       document.getElementById("navbar-container").innerHTML = html;
 
-      // Modo oscuro persistente
+      // Modo oscuro 
       const toggle = document.getElementById("darkModeToggle");
       if (localStorage.getItem("dark-mode") === "true") {
         document.body.classList.add("dark-mode");
@@ -85,7 +85,7 @@
         localStorage.setItem("dark-mode", document.body.classList.contains("dark-mode"));
       });
 
-      // Activar subrayado de página actual
+      
       const path = location.pathname;
       if (path.includes("index")) document.getElementById("nav-mapa")?.classList.add("active");
       if (path.includes("parques")) document.getElementById("nav-parques")?.classList.add("active");

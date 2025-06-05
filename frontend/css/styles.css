@@ -9,17 +9,7 @@
   background-color: #fdfdfd;
 }
 
-/*
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-left: 1rem; padding-right: 1rem;
-  padding: 1rem 2rem;
-  background-color: #111;
-  font-size: 1.4rem;
-}
-*/
+
 
 .header {
   background-color: #111;
@@ -48,7 +38,7 @@ nav {
   display: flex;
   align-items: center;
   margin-left: auto;
-  gap: 1rem; /* Espaciado entre los elementos */
+  gap: 1rem; 
 }
 
 nav a {
@@ -121,7 +111,7 @@ nav a.active::after {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* === EXTENSION PARA parks.html === */
+
 
 .park-details {
   max-width: 960px;
@@ -270,8 +260,6 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-
-/* PARQUES */
 
 
 .suggestion-box {

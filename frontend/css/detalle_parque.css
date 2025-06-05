@@ -8,18 +8,7 @@ body {
   background-color: #fdfdfd;
 }
 
-/*
-header {
-  padding-left: 1rem; padding-right: 1rem;
-  background-color: #111;
-  color: #fff;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1.4rem;
-}
-*/
+
 
 .header {
   background-color: #111;
@@ -131,7 +120,7 @@ nav {
   display: flex;
   align-items: center;
   margin-left: auto;
-  gap: 1rem; /* Espaciado entre los elementos */
+  gap: 1rem; 
 }
 
 
@@ -162,7 +151,7 @@ body.dark-mode nav a:hover {
 }
 
 
-/* Mejorar visuales */
+
 .detalle-container {
   max-width: 900px;
   margin: 2rem auto;

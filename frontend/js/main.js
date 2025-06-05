@@ -124,7 +124,7 @@ async function cargarParques() {
   try {
     const response = await fetch('http://localhost:3000/api/parques');
     parquesGlobal = await response.json();
-    filtrarParques(); // filtra y pinta
+    filtrarParques(); 
   } catch (err) {
     console.error('Error al cargar parques:', err);
   }
@@ -245,29 +245,14 @@ async function cargarEventosCulturales() {
   }
 }
 
-/*
-function rellenarBarriosUnicos() {
-  barrioFilter.innerHTML = '<option value="">Todos los barrios</option>'; // resetea
-  const barriosParques = parquesGlobal.map(p => p.barrio);
-  const barriosEventos = eventosCulturalesGlobal.map(e => e.barrio);
-  const todos = [...new Set([...barriosParques, ...barriosEventos].filter(Boolean))].sort();
-
-  todos.forEach(barrio => {
-    const opt = document.createElement("option");
-    opt.value = barrio;
-    opt.textContent = barrio;
-    barrioFilter.appendChild(opt);
-  });
-}
-
-*/
 
 
 
 
 
 
-// Equipamientos
+
+// test1
 fetch('http://localhost:3000/api/equipamientos')
   .then(response => response.json())
   .then(data => {
@@ -360,14 +345,7 @@ document.getElementById('filter-larga').addEventListener('change', filtrarEvento
 
 cargarEventosCulturales();
 
-/*
-async function iniciar() {
-  await cargarParques();              // carga parques y guarda en parquesGlobal
-  await cargarEventosCulturales();   // carga eventos y guarda en eventosCulturalesGlobal
-  rellenarBarriosUnicos();           // genera el select con todos los barrios únicos
-}
-iniciar();
-*/
+
 
 document.querySelectorAll('.filter-accesibilidad').forEach(input => {
   input.addEventListener('change', filtrarParques);

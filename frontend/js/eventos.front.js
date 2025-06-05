@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     renderizarEventos(eventos);
 
 
-    // Rellenar el select de barrios únicos ordenados
+    
     const barriosUnicos = [...new Set(eventos.map(e => e.barrio).filter(Boolean))].sort();
     barriosUnicos.forEach(barrio => {
       const opt = document.createElement("option");

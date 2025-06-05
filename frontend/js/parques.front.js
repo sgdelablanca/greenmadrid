@@ -2,10 +2,8 @@
 const pathname = window.location.pathname.split("/").pop(); 
 
 
-
 document.addEventListener("DOMContentLoaded", async () => {
-  
-  // === 🌳 DETALLE PARQUE ===
+
   if (pathname.includes("detalle_parque.html")) {
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get("id");
@@ -29,14 +27,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       document.getElementById("descripcion").innerHTML = parque.descripcion || "No disponible";
       document.getElementById("org").textContent = parque.nombre_organizacion || "No disponible";
 
-      // 🌆 Imagen destacada
       const imgEl = document.getElementById("imagen-parque");
       imgEl.src = `/api/parques/${parque.id}/imagen`;
       imgEl.onerror = () => {
         imgEl.src = "assets/img/parques/default.jpg";
       };
 
-      // 🔗 Enlace a ficha oficial
+
       const ficha = document.getElementById("url_ficha");
       if (parque.url_ficha) {
         ficha.href = parque.url_ficha;
@@ -45,7 +42,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         ficha.style.display = "none";
       }
 
-      // 🗺️ Mapa
       if (parque.latitud && parque.longitud) {
         const map = L.map("map").setView([parseFloat(parque.latitud), parseFloat(parque.longitud)], 16);
         L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -64,7 +60,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  // === 📋 LISTADO DE PARQUES ===
+
 if (pathname === "parques.html") {
 
     async function cargarBarrios() {

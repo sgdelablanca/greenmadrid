@@ -47,12 +47,11 @@ app.get('/', (req, res) => {
   res.send('Servidor GreenMadrid funcionando correctamente 🚀');
 });
 
-// Importa y usa la ruta de fuentes
 const fuentesRoutes = require('./routes/fuentes.routes');
 app.use('/api/fuentes', fuentesRoutes);
 
 
-// Puerto
+
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en http://localhost:${PORT}`);
