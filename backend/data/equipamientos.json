@@ -1,0 +1,16 @@
+[
+  {
+    "id": 101,
+    "tipo": "fuente",
+    "lat": 40.417085,
+    "lon": -3.683889,
+    "descripcion": "Fuente potable junto a entrada del Retiro"
+  },
+  {
+    "id": 102,
+    "tipo": "área infantil",
+    "lat": 40.404000,
+    "lon": -3.716500,
+    "descripcion": "Zona de juegos en Madrid Río"
+  }
+]

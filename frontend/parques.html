@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parques | GreenMadrid</title>
+  <link rel="stylesheet" href="css/parques.v2.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+  <div id="navbar-container"></div>
+
+  <main class="main-layout">
+    <!-- Sidebar de filtros -->
+    <aside class="sidebar">
+      <h2>🔎 Filtros</h2>
+
+      <div class="filter-group">
+        <label for="barrioSelect">Barrio:</label>
+        <select id="barrioSelect">
+          <option value="">Todos</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <strong>Accesibilidad:</strong>
+        <div id="accesibilidadFiltros">
+          <!-- Aquí se insertan los checkbox desde JS -->
+        </div>
+      </div>
+    </aside>
+
+    <!-- Contenido principal -->
+    <section class="content">
+      <div class="controls">
+        <input type="text" id="searchInput" placeholder="Buscar parque..." autocomplete="off" />
+        <select id="ordenarSelect">
+          <option value="asc">A-Z</option>
+          <option value="desc">Z-A</option>
+        </select>
+        <ul id="suggestions" class="suggestion-box"></ul>
+      </div>
+
+      <div id="parquesContainer" class="parques-grid">
+        <!-- Tarjetas de parques desde JS -->
+      </div>
+    </section>
+  </main>
+
+  <script src="js/parques.v2.front.js"></script>
+  <script>
+    fetch("components/navbar.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("navbar-container").innerHTML = html;
+
+        const toggle = document.getElementById("darkModeToggle");
+        if (localStorage.getItem("dark-mode") === "true") {
+          document.body.classList.add("dark-mode");
+        }
+        toggle?.addEventListener("click", () => {
+          document.body.classList.toggle("dark-mode");
+          localStorage.setItem("dark-mode", document.body.classList.contains("dark-mode"));
+        });
+
+        const path = location.pathname;
+        if (path.includes("parques")) document.getElementById("nav-parques")?.classList.add("active");
+      });
+  </script>
+</body>
+</html>

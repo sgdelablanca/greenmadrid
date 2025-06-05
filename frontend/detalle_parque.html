@@ -1,0 +1,189 @@
+<!--
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detalle del Parque</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="css/detalle_parque.css" />
+</head>
+
+<body>
+  <div id="navbar-container"></div>
+  <header>
+    <h1 id="nombre">Nombre del Parque</h1>
+  </header>
+
+  <main class="content">
+    <section class="info">
+      <p><strong>Dirección:</strong> <span id="direccion"></span></p>
+      <p><strong>Barrio:</strong> <span id="barrio"></span></p>
+      <p><strong>Distrito:</strong> <span id="distrito"></span></p>
+      <p><strong>Horario:</strong> <span id="horario"></span></p>
+      <p><strong>Accesibilidad:</strong> <span id="accesibilidad"></span></p>
+      <p><strong>Servicios:</strong> <span id="servicios"></span></p>
+      <p><strong>Organización responsable:</strong> <span id="org"></span></p>
+      <div class="desc">
+        <strong>Descripción:</strong>
+        <p id="descripcion"></p>
+      </div>
+    </section>
+
+    <section class="map-section">
+      <div id="map"></div>
+    </section>
+
+    <p class="back-link"><a href="parques.html">⬅ Volver al listado</a></p>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+  fetch("components/navbar.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("navbar-container").innerHTML = html;
+
+      const toggle = document.getElementById("darkModeToggle");
+      if (localStorage.getItem("dark-mode") === "true") {
+        document.body.classList.add("dark-mode");
+      }
+      toggle?.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        localStorage.setItem("dark-mode", document.body.classList.contains("dark-mode"));
+      });
+
+      const path = location.pathname;
+      if (path.includes("index")) document.getElementById("nav-mapa")?.classList.add("active");
+      if (path.includes("parques")) document.getElementById("nav-parques")?.classList.add("active");
+      if (path.includes("eventos")) document.getElementById("nav-eventos")?.classList.add("active");
+    });
+</script>
+  <script src="js/detalle_parque.front.js">
+  fetch("components/navbar.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("navbar-container").innerHTML = html;
+
+      const toggle = document.getElementById("darkModeToggle");
+      if (localStorage.getItem("dark-mode") === "true") {
+        document.body.classList.add("dark-mode");
+      }
+      toggle?.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        localStorage.setItem("dark-mode", document.body.classList.contains("dark-mode"));
+      });
+
+      const path = location.pathname;
+      if (path.includes("index")) document.getElementById("nav-mapa")?.classList.add("active");
+      if (path.includes("parques")) document.getElementById("nav-parques")?.classList.add("active");
+      if (path.includes("eventos")) document.getElementById("nav-eventos")?.classList.add("active");
+    });
+</script>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.getElementById("darkModeToggle");
+    if (localStorage.getItem("dark-mode") === "true") {
+      document.body.classList.add("dark-mode");
+    }
+
+    toggle?.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      localStorage.setItem("dark-mode", document.body.classList.contains("dark-mode"));
+    });
+  });
+
+  fetch("components/navbar.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("navbar-container").innerHTML = html;
+
+      const toggle = document.getElementById("darkModeToggle");
+      if (localStorage.getItem("dark-mode") === "true") {
+        document.body.classList.add("dark-mode");
+      }
+      toggle?.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        localStorage.setItem("dark-mode", document.body.classList.contains("dark-mode"));
+      });
+
+      const path = location.pathname;
+      if (path.includes("index")) document.getElementById("nav-mapa")?.classList.add("active");
+      if (path.includes("parques")) document.getElementById("nav-parques")?.classList.add("active");
+      if (path.includes("eventos")) document.getElementById("nav-eventos")?.classList.add("active");
+    });
+</script>
+
+</body>
+</html>
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detalle del Parque</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="css/detalle_parque.css" />
+</head>
+
+<body>
+  <div id="navbar-container"></div>
+
+  <main class="content">
+    <div class="detalle-container">
+
+      <!-- Imagen destacada -->
+      <img id="imagen-parque" class="imagen-parque" src="assets/img/5896013.jpg" alt="Imagen del parque" />
+
+      <h2 id="nombre">Nombre del Parque</h2>
+
+      <div class="info-grid">
+        <p><strong>Dirección:</strong> <span id="direccion"></span></p>
+        <p><strong>Barrio:</strong> <span id="barrio"></span></p>
+        <p><strong>Distrito:</strong> <span id="distrito"></span></p>
+        <p><strong>Horario:</strong> <span id="horario"></span></p>
+        <p><strong>Accesibilidad:</strong> <span id="accesibilidad"></span></p>
+        <p><strong>Servicios:</strong> <span id="servicios"></span></p>
+        <p><strong>Organización responsable:</strong> <span id="org"></span></p>
+      </div>
+
+      <div class="desc">
+        <strong>Descripción:</strong>
+        <p id="descripcion"></p>
+      </div>
+
+      <div id="map" class="map-container"></div>
+
+      <div class="ficha-oficial">
+        <a id="url_ficha" href="#" target="_blank">🌐 Ver ficha oficial en madrid.es</a>
+      </div>
+
+      <p class="back-link"><a href="parques.html">⬅ Volver al listado</a></p>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/detalle_parque.front.js"></script>
+
+  <script>
+    fetch("components/navbar.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("navbar-container").innerHTML = html;
+        const toggle = document.getElementById("darkModeToggle");
+        if (localStorage.getItem("dark-mode") === "true") {
+          document.body.classList.add("dark-mode");
+        }
+        toggle?.addEventListener("click", () => {
+          document.body.classList.toggle("dark-mode");
+          localStorage.setItem("dark-mode", document.body.classList.contains("dark-mode"));
+        });
+
+        const path = location.pathname;
+        if (path.includes("index")) document.getElementById("nav-mapa")?.classList.add("active");
+        if (path.includes("parques")) document.getElementById("nav-parques")?.classList.add("active");
+        if (path.includes("eventos")) document.getElementById("nav-eventos")?.classList.add("active");
+      });
+  </script>
+</body>
+</html>

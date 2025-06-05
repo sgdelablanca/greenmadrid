@@ -1,0 +1,77 @@
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eventos culturales - GreenMadrid</title>
+  <link rel="stylesheet" href="css/eventos.css" />
+</head>
+<body>
+  <div id="navbar-container"></div>
+
+  <div class="main-layout">
+    <aside class="sidebar">
+      <h3>🎭 Eventos culturales</h3>
+
+      <div class="filter-group">
+        <strong>Barrio</strong>
+        <select id="filtroBarrio">
+          <option value="">Todos los barrios</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <strong>Accesibilidad</strong>
+        <label><input type="checkbox" class="filter-accesibilidad" value="Accesible"> Accesible</label>
+        <label><input type="checkbox" class="filter-accesibilidad" value="No accesible"> No accesible</label>
+        <label><input type="checkbox" class="filter-accesibilidad" value="Lengua de signos"> Lengua de signos</label>
+        <label><input type="checkbox" class="filter-accesibilidad" value="Bucle magnético"> Bucle magnético</label>
+        <label><input type="checkbox" class="filter-accesibilidad" value="Señalización podotáctil"> Señalización podotáctil</label>
+        <label><input type="checkbox" class="filter-accesibilidad" value="Parcialmente accesible"> Parcialmente accesible</label>
+      </div>
+
+      <div class="filter-group">
+        <strong>Tipo</strong>
+        <label><input type="checkbox" class="filter-tipo" value="Cultura"> Cultura</label>
+        <label><input type="checkbox" class="filter-tipo" value="Exposiciones"> Exposiciones</label>
+        <label><input type="checkbox" class="filter-tipo" value="Talleres"> Talleres</label>
+        <label><input type="checkbox" class="filter-tipo" value="Cuentacuentos"> Cuentacuentos</label>
+        <label><input type="checkbox" class="filter-tipo" value="TeatroPerformance"> TeatroPerformance</label>
+        <label><input type="checkbox" class="filter-tipo" value="Musica"> Musica</label>
+        <label><input type="checkbox" class="filter-tipo" value="Campamentos"> Campamentos</label>
+      </div>
+
+      <div class="filter-group">
+        <strong>Otros</strong>
+        <label><input type="checkbox" id="filter-gratuito"> Gratuito</label>
+        <label><input type="checkbox" id="filter-larga"> Larga duración</label>
+      </div>
+    </aside>
+
+    <main class="content">
+      <div id="eventosContainer">Cargando eventos...</div>
+    </main>
+  </div>
+
+  <script src="js/eventos.front.js"></script>
+  <script>
+    fetch("components/navbar.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("navbar-container").innerHTML = html;
+        const toggle = document.getElementById("darkModeToggle");
+        if (localStorage.getItem("dark-mode") === "true") document.body.classList.add("dark-mode");
+        toggle?.addEventListener("click", () => {
+          document.body.classList.toggle("dark-mode");
+          localStorage.setItem("dark-mode", document.body.classList.contains("dark-mode"));
+        });
+        document.getElementById("nav-eventos")?.classList.add("active");
+      });
+  </script>
+</body>
+</html>
+
+
+

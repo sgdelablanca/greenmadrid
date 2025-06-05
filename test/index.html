@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GreenMadrid - Visor</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header>
+<div id="navbar-container"></div>
+
+  </header>
+
+  <div class="main-container">
+    <div class="sidebar">
+      <h3>Filtros</h3>
+
+      <div class="filter-group">
+        <strong>Accesibilidad</strong>
+        <label><input type="checkbox" class="filter-accesibilidad" value="Accesible"> Accesible</label>
+        <label><input type="checkbox" class="filter-accesibilidad" value="Bucle magnético"> Bucle magnético</label>
+        <label><input type="checkbox" class="filter-accesibilidad" value="Señalización podotáctil"> Señalización podotáctil</label>
+        <label><input type="checkbox" class="filter-accesibilidad" value="Sin información"> Sin información</label>
+      </div>
+
+      <div class="filter-group">
+        <strong>Tipo de evento</strong>
+        <label><input type="checkbox" class="filter-tipo" value="Conciertos"> Conciertos</label>
+        <label><input type="checkbox" class="filter-tipo" value="Exposiciones"> Exposiciones</label>
+        <label><input type="checkbox" class="filter-tipo" value="Talleres"> Talleres</label>
+        <label><input type="checkbox" class="filter-tipo" value="Cuentacuentos"> Cuentacuentos</label>
+      </div>
+
+      <div class="filter-group">
+        <strong>Otros</strong>
+        <label><input type="checkbox" id="filter-gratuito"> Gratuito</label>
+        <label><input type="checkbox" id="filter-larga"> Larga duración</label>
+      </div>
+
+      <div class="filter-group" id="panel-capas">
+        <strong>Capas del mapa</strong>
+        <label><input type="checkbox" id="toggleParques" checked> Parques y jardines</label>
+        <label><input type="checkbox" id="toggleEquipamientos" checked> Equipamientos</label>
+        <label><input type="checkbox" id="toggleFuentes" checked> Fuentes</label>
+        <label><input type="checkbox" id="toggleAreasDeportivas" checked> Áreas deportivas</label>
+        <label><input type="checkbox" id="toggleAreasMayores" checked> Áreas mayores</label>
+        <label><input type="checkbox" id="toggleEventosCulturales" checked> Eventos culturales</label>
+      </div>
+    </div>
+
+    <div id="map"></div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/main.js"></script>
+<script>
+  fetch("components/navbar.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("navbar-container").innerHTML = html;
+
+      // Modo oscuro persistente
+      const toggle = document.getElementById("darkModeToggle");
+      if (localStorage.getItem("dark-mode") === "true") {
+        document.body.classList.add("dark-mode");
+      }
+      toggle?.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        localStorage.setItem("dark-mode", document.body.classList.contains("dark-mode"));
+      });
+
+      // Activar subrayado de página actual
+      const path = location.pathname;
+      if (path.includes("index")) document.getElementById("nav-mapa")?.classList.add("active");
+      if (path.includes("parques")) document.getElementById("nav-parques")?.classList.add("active");
+      if (path.includes("eventos")) document.getElementById("nav-eventos")?.classList.add("active");
+    });
+</script>
+
+
+
+</body>
+</html>

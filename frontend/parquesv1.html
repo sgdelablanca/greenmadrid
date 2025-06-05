@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parques - GreenMadrid</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="navbar-container"></div>
+
+  <main class="main-container">
+    <aside class="sidebar">
+      <h3>Filtros</h3>
+      <label for="barrioSelect"><strong>Barrio</strong></label>
+      <select id="barrioSelect">
+        <option value="">Todos</option>
+      </select>
+    </aside>
+
+    <section class="content">
+      <div class="top-bar">
+        <input type="text" id="searchInput" placeholder="Buscar parque..." autocomplete="off" />
+        <select id="ordenarSelect">
+          <option value="asc">Ordenar A-Z</option>
+          <option value="desc">Ordenar Z-A</option>
+        </select>
+        <ul id="suggestions" class="suggestion-box"></ul>
+      </div>
+      <div id="parquesContainer" class="parques-listado"></div>
+    </section>
+  </main>
+
+  <script src="js/parques.front.js"></script>
+  <script>
+    fetch("components/navbar.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("navbar-container").innerHTML = html;
+
+        const toggle = document.getElementById("darkModeToggle");
+        if (localStorage.getItem("dark-mode") === "true") {
+          document.body.classList.add("dark-mode");
+        }
+        toggle?.addEventListener("click", () => {
+          document.body.classList.toggle("dark-mode");
+          localStorage.setItem("dark-mode", document.body.classList.contains("dark-mode"));
+        });
+
+        const path = location.pathname;
+        if (path.includes("parques")) document.getElementById("nav-parques")?.classList.add("active");
+      });
+  </script>
+</body>
+</html>

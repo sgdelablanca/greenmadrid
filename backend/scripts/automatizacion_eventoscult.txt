@@ -1,0 +1,12 @@
+const cron = require('node-cron');
+const { exec } = require('child_process');
+
+cron.schedule('0 */6 * * *', () => {
+  exec('node backend/scripts/syncEventosCulturales.js', (err, stdout, stderr) => {
+    if (err) {
+      console.error(`Error al ejecutar sincronización: ${err}`);
+      return;
+    }
+    console.log(stdout);
+  });
+});

@@ -1,0 +1,98 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5f5f5;
+  color: #222;
+}
+
+header {
+  padding-left: 1rem; padding-right: 1rem;
+  background-color: #111;
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.4rem;
+}
+
+.content {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem 2rem;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.info p {
+  margin: 0.6rem 0;
+}
+
+.desc p {
+  margin-top: 0.4rem;
+  line-height: 1.6;
+}
+
+#map {
+  height: 400px;
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.back-link {
+  margin-top: 2rem;
+  text-align: right;
+}
+
+.back-link a {
+  text-decoration: none;
+  color: #0077cc;
+  font-weight: bold;
+}
+
+.back-link a:hover {
+  text-decoration: underline;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+body.dark-mode .header {
+  padding-left: 1rem; padding-right: 1rem;
+  background-color: #1c1c1c;
+  color: #f0f0f0;
+}
+
+body.dark-mode .content,
+body.dark-mode .park-details {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  box-shadow: none;
+}
+
+body.dark-mode a {
+  color: #88d4ff;
+}
+
+#darkModeToggle {
+  margin-left: 1rem;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.title {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.highlight {
+  color: #00ff94;
+}
